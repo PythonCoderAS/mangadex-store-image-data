@@ -22,6 +22,7 @@
             const data = (await fetch("https://api.mangadex.org/chapter/" + chapterId)).json();
             const pages = data.data.attributes.pages;
             navigator.locks.request("image-data--addData", async () => {
+                
             });
         };
     }
