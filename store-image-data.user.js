@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1
-// @description  Store image stats
-// @author       You
+// @version      1.0
+// @description  Store image Stats
+// @author       PythonCoderAS
 // @match        https://mangadex.org/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=mangadex.org
 // @grant        GM.getValue
