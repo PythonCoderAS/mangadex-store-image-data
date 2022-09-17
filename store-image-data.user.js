@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1.1.0
+// @version      1.1.1
 // @description  Store image Stats
 // @author       PythonCoderAS
 // @match        https://mangadex.org/*
@@ -48,7 +48,7 @@ function processChapter(url) {
           /**
            * @type {Object[]}
            */
-          const data = await JSON.parse(GM.getValue("image-data", "[]"));
+          const data = await JSON.parse(await GM.getValue("image-data", "[]"));
           data.push({
             chapterId,
             pages,
