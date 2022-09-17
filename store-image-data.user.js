@@ -11,20 +11,20 @@
 // @run-at       document-start
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    let _pushState = History.prototype.pushState;
-    History.prototype.pushState = function (state, title, url) {
-        _pushState.call(this, state, title, url);
-        if (url.includes("/chapter/")){
-            const chapterId = url.split("/")[2];
-            const data = (await fetch("https://api.mangadex.org/chapter/" + chapterId)).json();
-            const pages = data.data.attributes.pages;
-            navigator.locks.request("image-data--addData", async () => {
-                
-            });
-        };
+  let _pushState = History.prototype.pushState;
+  History.prototype.pushState = function (state, title, url) {
+    _pushState.call(this, state, title, url);
+    if (url.includes("/chapter/")) {
+      const chapterId = url.split("/")[2];
+      fetch("https://api.mangadex.org/chapter/" + chapterId)
+        .then((response) => response.json())
+        .then((data) => {
+          const pages = data.data.attributes.pages;
+          navigator.locks.request("image-data--addData", async () => {});
+        });
     }
-}
-)();
+  };
+})();
