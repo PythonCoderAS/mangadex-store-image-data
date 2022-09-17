@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Store Image Data
-// @namespace    http://mangadex.org/
+// @namespace    https://mangadex.org/
 // @version      1
 // @description  Store image stats
 // @author       You
