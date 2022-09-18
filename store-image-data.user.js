@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1.1.1
+// @version      1.2.0
 // @description  Store image Stats
 // @author       PythonCoderAS
 // @match        https://mangadex.org/*
@@ -60,14 +60,11 @@ function processChapter(url) {
   }
 }
 
-(function () {
-  "use strict";
+let last_path = "";
 
-  let _pushState = History.prototype.pushState;
-  History.prototype.pushState = function (state, title, url) {
-    _pushState.call(this, state, title, url);
-    processChapter(url);
-  };
-
-  processChapter(window.location.pathname);
-})();
+setInterval(() => {
+  if (last_path != window.location.pathname) {
+    last_path = window.location.pathname;
+    processChapter(window.location.pathname);
+  }
+}, 100);
