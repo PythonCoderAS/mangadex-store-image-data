@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1.2.2
+// @version      1.2.3
 // @description  Store image Stats
 // @author       PythonCoderAS
 // @match        https://mangadex.org/*
@@ -69,5 +69,7 @@ setInterval(() => {
       last_chapter_id = chapterId;
       processChapter(window.location.pathname);
     }
+  } else {
+    last_chapter_id = "";
   }
 }, 100);
