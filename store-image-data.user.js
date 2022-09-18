@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1.2.1
+// @version      1.2.2
 // @description  Store image Stats
 // @author       PythonCoderAS
 // @match        https://mangadex.org/*
@@ -64,7 +64,7 @@ let last_chapter_id = "";
 
 setInterval(() => {
   if (window.location.pathname.includes("/chapter/")) {
-    const chapterId = url.split("/")[2];
+    const chapterId = window.location.pathname.split("/")[2];
     if (chapterId != last_chapter_id) {
       last_chapter_id = chapterId;
       processChapter(window.location.pathname);
