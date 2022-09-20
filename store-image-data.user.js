@@ -1,15 +1,21 @@
 // ==UserScript==
 // @name         Store Image Data
 // @namespace    https://mangadex.org/
-// @version      1.2.3
+// @version      1.3.0
 // @description  Store image Stats
 // @author       PythonCoderAS
 // @match        https://mangadex.org/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=mangadex.org
 // @grant        GM.getValue
 // @grant        GM.setValue
+// @require      https://cdn.jsdelivr.net/npm/luxon@3.0.3/build/global/luxon.min.js
 // @run-at       document-start
 // ==/UserScript==
+
+/**
+ * @type {typeof import("luxon").DateTime}
+ */
+const DateTime = luxon.DateTime;
 
 function processChapter(url) {
   if (url.includes("/chapter/")) {
@@ -53,6 +59,7 @@ function processChapter(url) {
             chapterId,
             pages,
             bytes,
+            createdAt: DateTime.now().setZone("UTC").toISO(),
           });
           await GM.setValue("image-data", JSON.stringify(data));
         });
